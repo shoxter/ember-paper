@@ -81,8 +81,8 @@ export default Mixin.create({
     run.schedule('afterRender', () => {
       $(this.get('defaultedParent')).parent().append(containerClone);
       run.next(() => {
-        dialogClone.removeClass('md-transition-in');
         dialogClone.addClass('md-transition-out');
+        dialogClone.removeClass('md-transition-in');
         dialogClone.attr('style', toStyle);
         run.next(() => {
           this.waitTransitionEnd(dialogClone).then(() => {
