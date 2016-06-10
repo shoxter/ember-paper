@@ -23,9 +23,9 @@ export default BaseFocusable.extend(RippleMixin, ProxiableMixin, ColorMixin, {
 
   value: false,
 
-  didInitAttrs() {
+  init() {
     this._super(...arguments);
-    assert('{{paper-checkbox}} requires an `onChange` action', !!this.get('onChange'));
+    assert('{{paper-checkbox}} requires an `onChange` action or null for no action.', this.get('onChange') !== undefined);
   },
 
   click() {
