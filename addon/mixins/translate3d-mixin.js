@@ -88,6 +88,9 @@ export default Mixin.create({
           this.waitTransitionEnd(dialogClone).then(() => {
             containerClone.remove();
             this.onTranslateToEnd($(this.get('origin')));
+          }, () => {
+            containerClone.remove();
+            this.onTranslateToEnd($(this.get('origin')));
           });
         });
       });
@@ -104,7 +107,7 @@ export default Mixin.create({
   waitTransitionEnd($element) {
 
     // fallback is 3 secs
-    return new Promise((resolve/*, reject*/) => {
+    return new Promise((resolve, reject) => {
 
       // Upon timeout or transitionEnd, reject or resolve (respectively) this promise.
       // NOTE: Make sure this transitionEnd didn't bubble up from a child
@@ -113,6 +116,7 @@ export default Mixin.create({
           run(resolve);
         }
       });
+      Ember.run.later(function() {run(reject)}, 1000);
 
     });
   },

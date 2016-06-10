@@ -13,10 +13,10 @@ export default Component.extend({
   defaultedParent: computed.or('parent', 'wormholeSelector'),
 
   // Calculate a default that is always valid where the opening transition should originate.
-  defaultedOpenFrom: computed.or('openFrom', 'origin', 'parent'),
+  defaultedOpenFrom: computed.or('openFrom', 'origin', 'defaultedParent'),
 
   // Calculate a default that is always valid where the closing transition should terminate.
-  defaultedCloseTo: computed.or('closeTo', 'origin', 'parent'),
+  defaultedCloseTo: computed.or('closeTo', 'origin', 'defaultedParent'),
 
   // Calculate the id of the wormhole destination, setting it if need be. The
   // id is that of the 'parent', if provided, or 'paper-wormhole' if not.
