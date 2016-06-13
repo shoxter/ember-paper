@@ -116,7 +116,7 @@ export default Mixin.create({
           run(resolve);
         }
       });
-      Ember.run.later(function() {run(reject)}, 1000);
+      Ember.run.later(function() {run(reject)}, 500);
 
     });
   },
